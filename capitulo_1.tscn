@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cr74q0yyxkp4h"]
+
+[ext_resource type="Texture2D" uid="uid://bo57nf2ycklmq" path="res://assets/cenario/sala.png" id="1_v32bi"]
+[ext_resource type="Texture2D" uid="uid://t7cnh1k68lox" path="res://assets/cenario/sofa.png" id="2_7y8o0"]
+[ext_resource type="Texture2D" uid="uid://lp2fosy5sovv" path="res://assets/cenario/tv.png" id="3_kr13y"]
+[ext_resource type="Texture2D" uid="uid://wom0a3hkns1b" path="res://assets/cenario/estante.png" id="4_idide"]
+
+[node name="Capitulo1" type="Node2D" unique_id=2038272670]
+
+[node name="Sala" type="Node2D" parent="." unique_id=1953960427]
+
+[node name="Fundo" type="Sprite2D" parent="Sala" unique_id=2088387454]
+position = Vector2(576, 324)
+texture = ExtResource("1_v32bi")
+
+[node name="Objetos" type="Node2D" parent="Sala" unique_id=818994434]
+
+[node name="Sofa" type="Sprite2D" parent="Sala/Objetos" unique_id=816120488]
+texture = ExtResource("2_7y8o0")
+
+[node name="Televisao" type="Sprite2D" parent="Sala/Objetos" unique_id=846230491]
+texture = ExtResource("3_kr13y")
+
+[node name="Estante" type="Sprite2D" parent="Sala/Objetos" unique_id=1637344081]
+texture = ExtResource("4_idide")
+
+[node name="Personagem" type="CharacterBody2D" parent="." unique_id=756292071]
+
+[node name="Camera2D" type="Camera2D" parent="Personagem" unique_id=53676762]
+
+[node name="Celular" type="CanvasLayer" parent="." unique_id=337259505]
