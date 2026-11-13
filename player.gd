@@ -9,6 +9,9 @@ var gravity = ProjectSettings.get_setting(
     "physics/2d/default_gravity"
 )
 
+var was_on_floor = true
+var landing = false
+
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 func _physics_process(delta):
@@ -17,10 +20,7 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 
 	# Movimento
-	var direction = Input.get_axis(
-		"ui_left",
-        "ui_right"
-	)
+	var direction = Input.get_axis("ui_left", "ui_right")
 
 	var running = Input.is_action_pressed("run")
 	var current_speed = run_speed if running else speed
@@ -33,12 +33,25 @@ func _physics_process(delta):
 
 	# Pulo
 	if Input.is_action_just_pressed("ui_accept"):
-		if is_on_floor():
+		if is_on_floor() and not landing:
 			velocity.y = jump_velocity
 
 	move_and_slide()
 
-	# Animações
+	# Detecta o momento em que aterrissa
+	if not was_on_floor and is_on_floor():
+		landing = true
+		sprite.play("land")
+
+	was_on_floor = is_on_floor()
+
+	# Não interrompe a animação de aterrissagem
+	if landing:
+		if not sprite.is_playing():
+			landing = false
+		return
+
+	# Escolhe a animação
 	var next_animation = "idle"
 
 	if not is_on_floor():

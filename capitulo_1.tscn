@@ -4,28 +4,54 @@
 [ext_resource type="Texture2D" uid="uid://t7cnh1k68lox" path="res://assets/cenario/sofa.png" id="2_7y8o0"]
 [ext_resource type="Texture2D" uid="uid://lp2fosy5sovv" path="res://assets/cenario/tv.png" id="3_kr13y"]
 [ext_resource type="Texture2D" uid="uid://wom0a3hkns1b" path="res://assets/cenario/estante.png" id="4_idide"]
+[ext_resource type="Texture2D" uid="uid://buc6uxpf7eau2" path="res://assets/cenario/movel.png" id="5_7y8o0"]
+[ext_resource type="PackedScene" uid="uid://cvr1osedtykqs" path="res://player.tscn" id="6_kr13y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ol7e2"]
+size = Vector2(613, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ptcd1"]
+size = Vector2(1339, 20)
 
 [node name="Capitulo1" type="Node2D" unique_id=2038272670]
 
 [node name="Sala" type="Node2D" parent="." unique_id=1953960427]
 
 [node name="Fundo" type="Sprite2D" parent="Sala" unique_id=2088387454]
-position = Vector2(576, 324)
+position = Vector2(64, -10)
 texture = ExtResource("1_v32bi")
 
 [node name="Objetos" type="Node2D" parent="Sala" unique_id=818994434]
 
 [node name="Sofa" type="Sprite2D" parent="Sala/Objetos" unique_id=816120488]
+position = Vector2(-4, 184)
 texture = ExtResource("2_7y8o0")
 
+[node name="StaticBody2D" type="StaticBody2D" parent="Sala/Objetos/Sofa" unique_id=1249966456]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sala/Objetos/Sofa/StaticBody2D" unique_id=627613303]
+position = Vector2(-31, 24)
+shape = SubResource("RectangleShape2D_ol7e2")
+
 [node name="Televisao" type="Sprite2D" parent="Sala/Objetos" unique_id=846230491]
+position = Vector2(421, -150)
 texture = ExtResource("3_kr13y")
 
 [node name="Estante" type="Sprite2D" parent="Sala/Objetos" unique_id=1637344081]
+position = Vector2(20, 0)
 texture = ExtResource("4_idide")
 
-[node name="Personagem" type="CharacterBody2D" parent="." unique_id=756292071]
+[node name="Movel" type="Sprite2D" parent="Sala/Objetos" unique_id=919069785]
+position = Vector2(394, 86)
+texture = ExtResource("5_7y8o0")
 
-[node name="Camera2D" type="Camera2D" parent="Personagem" unique_id=53676762]
+[node name="Player" parent="Sala" unique_id=419656756 instance=ExtResource("6_kr13y")]
+position = Vector2(593, 152)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sala" unique_id=1950554407]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sala/StaticBody2D" unique_id=1141038285]
+position = Vector2(62.5, 282)
+shape = SubResource("RectangleShape2D_ptcd1")
 
 [node name="Celular" type="CanvasLayer" parent="." unique_id=337259505]
